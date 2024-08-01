@@ -1,0 +1,40 @@
+<div id="huddleWidgetContainer" class="huddle-widget-container">
+    <div id="huddleWidgetCircle" class="huddle-circle">
+    </div>
+    <div id="huddleWidget" class="huddle-widget">
+        <div id="huddleWidgetStoryContainer">
+            <div id="huddleWidgetStoryChaptersContainer">
+                <!-- Story chapters will be dynamically loaded here -->
+            </div>
+            <div id="huddleWidgetStoryProgressContainer">
+                <!-- Story progress will be dynamically loaded here -->
+            </div>
+
+            <div class="huddle-widget-nav-bar">
+                <button id="huddleWidgetMenuButton" class="huddle-menu-button"></button>
+                <div id="huddleWidgetStoryCategoriesContainer">
+                    <!-- Story categories will be dynamically loaded here -->
+                </div>
+                <button id="huddleWidgetClose" class="huddle-close-button"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg></button>
+            </div>
+           
+        
+
+            <!-- Stories will be dynamically loaded here -->
+        </div>
+        <div id="huddleWidgetChatContainer">
+
+            <!-- Chat messages will be dynamically loaded here -->
+        </div>
+        <div id="huddleWidgetHideChat" class="clear-chat">
+            <button onclick="huddleToggleChat()">Hide Chat</button>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="huddleWidgetChatInput" placeholder="Type a message...">
+            <button onclick="huddleSendMessage()">Send</button>
+        </div>
+    </div>
+</div>

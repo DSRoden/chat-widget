@@ -1,0 +1,476 @@
+/* Keyframes for the expansion, spring, and fade-in animation */
+@keyframes expandSpringIn {
+  0% {
+    transform: scaleY(0.1) scaleX(0.95);
+    opacity: 0;
+  }
+  60% {
+    transform: scaleY(1.05) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for chat message animation */
+@keyframes chatMessageIn {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for typing indicator animation */
+@keyframes typingIndicator {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.huddle-widget-container {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+.huddle-circle {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1002;
+  background-size: cover;
+}
+
+.circle-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.huddle-widget {
+  display: none;
+  /* position: absolute; */
+  /* top: 50%; */
+  right: 0;
+  /* width: calc(min(100vw, 100vh * (9 / 16)));
+  height: calc(min(100vh, 100vw * (16 / 9))); */
+  /* Ensure the width does not exceed 400px while maintaining the 9:16 aspect ratio */
+  width: calc(min(400px, 100vw, 100vh * (9 / 16)));
+  height: calc(min(711px, 100vh, 100vw * (16 / 9)));
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 10px;
+  animation: expandSpringIn 0.5s ease-out forwards;
+  /* transform: translateY(-50%); */
+
+  opacity: 0;
+}
+
+#huddleWidgetStoryContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  height: 100%;
+  /* background: black; */
+  position: relative;
+}
+.story {
+  position: relative;
+  width: 100px;
+  height: 150px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.story img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Advanced transitions using keyframes */
+#huddleWidgetStoryChaptersContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden; /* Ensure content stays within bounds */
+}
+
+.chapter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.chapter.show {
+  opacity: 1;
+}
+
+.story-overlay {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.story-overlay.show {
+  opacity: 1;
+}
+
+.story-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  opacity: 0;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.story-overlay.show {
+  animation-name: fadeInOverlay;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.huddle-widget-story-hidden {
+  display: none !important;
+}
+#huddleWidgetStoryProgressContainer {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  top: 8px;
+  height: 3px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+}
+
+.progress-bar {
+  flex: 1;
+  background-color: gray;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 0;
+  transition: width linear;
+}
+
+.huddle-widget-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  /* width: 100%; */
+  color: white;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  gap: 10px;
+}
+
+.huddle-menu-button {
+  background: white;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  min-width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+.huddle-close-button {
+  background: none;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 46px;
+}
+
+#huddleWidgetStoryCategoriesContainer {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  z-index: 1000;
+  align-items: center;
+  justify-content: start;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+#huddleWidgetStoryCategoriesContainer::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+#huddleWidgetStoryCategoriesContainer::after {
+  content: "";
+  flex: 0 0 10px; /* Prevent items from sticking to the right edge */
+}
+
+.story-category {
+  flex-shrink: 0; /* Ensure items don't shrink */
+  margin: 0 5px; /* Add some margin between items */
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin: 0 8px;
+}
+
+.story-category img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+/* Target the huddleWidgetChatContainer div */
+#huddleWidgetChatContainer {
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute;
+  bottom: 94px;
+  left: 0;
+  right: 0;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 black; /* For Firefox */
+}
+
+/* Scrollbar Styles for WebKit */
+#huddleWidgetChatContainer::-webkit-scrollbar {
+  width: 8px; /* Make the scrollbar thinner */
+}
+
+#huddleWidgetChatContainer::-webkit-scrollbar-track {
+  background: black; /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+#huddleWidgetChatContainer::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar handle */
+  border-radius: 10px; /* Rounded corners for the handle */
+}
+
+#huddleWidgetChatContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color when hovered */
+}
+
+/* Create the blurred top effect */
+/* Create the blurred top effect */
+#huddleWidgetChatContainer::before {
+  content: "";
+  position: fixed;
+  top: -30px; /* Match the bottom position of the container */
+  left: 0;
+  right: 0;
+  height: 20px; /* Adjust height as needed */
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 100%;
+  z-index: 2;
+}
+#huddleWidgetHideChat {
+  height: 30px;
+  position: absolute;
+  bottom: 64px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#huddleWidgetHideChat button {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#huddleWidgetHideChat button:hover {
+  color: #007bff;
+}
+.chat-message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  animation: chatMessageIn 0.3s ease-out;
+}
+
+.user-message {
+  background: #007bff;
+  color: white;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.ai-message {
+  background: #e9ecef;
+  color: black;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.ai-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.typing-indicator .dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background: #ccc;
+  border-radius: 50%;
+  animation: typingIndicator 1s infinite;
+}
+
+.typing-indicator .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.chat-input-container {
+  height: 64px;
+  display: flex;
+  padding: 10px;
+  /* border-top: 1px solid #ccc; */
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.chat-input-container input {
+  padding: 10px;
+  flex-grow: 1;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 0 0 0 5px;
+  margin-right: 2px;
+}
+
+.chat-input-container button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0 0 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fixed-top {
+  position: fixed !important;
+  top: 5px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.fixed-bottom {
+  position: fixed !important;
+  bottom: 5px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.huddle-highlight {
+  outline: 2px solid yellow;
+  animation: highlight-animation 2s ease-out;
+}
+
+@keyframes highlight-animation {
+  0% {
+    outline-width: 2px;
+  }
+  50% {
+    outline-width: 4px;
+  }
+  100% {
+    outline-width: 2px;
+  }
+}

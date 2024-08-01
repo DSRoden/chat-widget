@@ -1,0 +1,74 @@
+{
+  "apiKey": "your-api-key",
+  "avatarUrl": "/assets/images/vi_agent_1.png",
+  "aiName": "ChatBot",
+  "greeting": "Hello! How can I assist you today?",
+  "uiTheme": {
+    "backgroundColor": "#ffffff",
+    "borderColor": "#007bff",
+    "borderRadius": "10px"
+  },
+  "storyCategories": [
+    {
+      "image": "path/to/story-image2.jpg",
+      "caption": "Travel"
+    },
+    {
+      "image": "path/to/story-image2.jpg",
+      "caption": "Culture"
+    },
+    {
+      "image": "path/to/story-image1.jpg",
+      "caption": "Food"
+    },
+
+    {
+      "image": "path/to/story-image2.jpg",
+      "caption": "Adventure"
+    },
+    {
+      "image": "path/to/story-image2.jpg",
+      "caption": "Events"
+    },
+    {
+      "image": "path/to/story-image2.jpg",
+      "caption": "Shopping"
+    }
+  ],
+  "stories": [
+    {
+        "date": "2020-01-01",
+        "category": "Food",
+        "title": "Food Story",
+        "chapters":  [
+            {
+                "caption": "chapter 1",
+                "description": "Description for chapter 1",
+                "payload": {
+                    "type": "video",
+                    "url": "https://localhost:3200/assets/videos/vi_woman_eating.mp4",
+                    "length":3
+                }
+            },
+            {
+                "caption": "chapter 2",
+                "description": "Description for chpater 2",
+                 "payload": {
+                    "type": "image",
+                    "url": "https://localhost:3200/assets/images/vi_woman_at_concert.png",
+                    "length": 5
+                }
+            },
+            {
+                "caption": "chapter 3",
+                "description": "Description for chapter 3",
+                 "payload": {
+                    "type": "image",
+                    "url": "https://localhost:3200/assets/images/vi_woman_in_park.png",
+                    "length": 5
+                }
+            }
+        ]
+    }
+  ]
+}
